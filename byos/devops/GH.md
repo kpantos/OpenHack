@@ -71,7 +71,7 @@ az account set --subscription <subscriptionId>
 Verify your account permissions for the subscription. Expected value: `Owner`.
 
 ```bash
-az role assignment list --assignee $(az account show --output tsv --query user.name) --output tsv --query [].roleDefinitionName
+az role assignment list --assignee $(az account show --output tsv --query user.name) --output tsv --query [].roleDefinitionName --include-inherited
 ```
 
 ### GitHub pre-deployment steps
@@ -81,6 +81,10 @@ Login to your [GitHub](https://github.com) account and [Create a Personal Access
 > **GitHub Personal Access Token authorization for use with SAML single sign-on**
 >
 > In some cases, if your GitHub account is associated with an organization that uses SAML single sign-on (SSO), you must first authorize the token. Follow this guide on how to do it: [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on)
+> 
+> Authorization of the PAT for single sign on for the Azure Samples repository
+> 
+>![](../images/GHSingleSignOn.png)
 
 Then set environment variable `GITHUB_TOKEN` with generated token.
 
